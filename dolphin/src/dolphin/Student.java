@@ -12,16 +12,16 @@ import java.net.Socket;
 
 public class Student {
 
-    private final ObjectOutputStream out;
-    private final ObjectInputStream in;
-    private final Robot robot;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
+    private Robot robot;
 
-    public Student(String serverMachine, String studentName, String ip) throws IOException, AWTException {
+    public Student(String useless,String name, String ip) throws IOException, AWTException {
         Socket socket = new Socket(InetAddress.getByName(ip), 5555);
         robot = new Robot();
         out = new ObjectOutputStream(socket.getOutputStream());
         in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
-        out.writeObject(studentName);
+        out.writeObject(name);
         out.flush();
     }
 
@@ -43,7 +43,7 @@ public class Student {
 
     public static void main(String[] args) throws Exception {
         try {
-            Student student = new Student("This doesn't really do anything", args[0], args[1]);
+            Student student = new Student("",args[0], args[1]);
             student.run();
         } catch (Exception ex) {
             System.err.println("Correct Usage:\n\tjava dolphin/Student <name> <ip>");

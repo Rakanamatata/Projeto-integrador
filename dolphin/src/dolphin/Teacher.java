@@ -14,6 +14,7 @@ import java.net.*;
 import java.util.Timer;
 import java.util.*;
 import javax.imageio.ImageIO;
+import dolphin.*;
 
 public class Teacher extends JFrame {
 
