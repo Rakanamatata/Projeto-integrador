@@ -16,8 +16,8 @@ public class Student {
     private final ObjectInputStream in;
     private final Robot robot;
 
-    public Student(String serverMachine, String studentName) throws IOException, AWTException {
-        Socket socket = new Socket(InetAddress.getLocalHost(), 5555);
+    public Student(String serverMachine, String studentName, String ip) throws IOException, AWTException {
+        Socket socket = new Socket(InetAddress.getByName(ip), 5555);
         robot = new Robot();
         out = new ObjectOutputStream(socket.getOutputStream());
         in = new ObjectInputStream(new BufferedInputStream(socket.getInputStream()));
@@ -42,8 +42,12 @@ public class Student {
     }
 
     public static void main(String[] args) throws Exception {
-        Student student = new Student("aaaa", "aaa");
-        student.run();
+        try {
+            Student student = new Student("This doesn't really do anything", args[0], args[1]);
+            student.run();
+        } catch (Exception ex) {
+            System.err.println("Correct Usage:\n\tjava dolphin/Student <name> <ip>");
+        }
 
     }
 }
