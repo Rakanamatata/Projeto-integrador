@@ -14,12 +14,11 @@ import java.net.*;
 import java.util.Timer;
 import java.util.*;
 import javax.imageio.ImageIO;
-import dolphin.*;
 
 public class Teacher extends JFrame {
 
     public static final int PORT = 5555;
-    private static final long SCREEN_SHOT_PERIOD = 33;
+    private static final long SCREEN_SHOT_PERIOD = 300;
     private static final int WINDOW_HEIGHT = 400;
     private static final int WINDOW_WIDTH = 500;
 
