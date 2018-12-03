@@ -1,6 +1,6 @@
 # Projeto-integrador
 
-You WILL need Java for this.
+You WILL need at least Java 8 for this, deal with it.
 
 Just download all the files and use the batch files to execute the code.
 
