@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 public class Teacher extends JFrame {
 
     public static final int PORT = 5555;
-    private static final long SCREEN_SHOT_PERIOD = 300;
+    private static final long SCREEN_SHOT_PERIOD = 200;
     private static final int WINDOW_HEIGHT = 400;
     private static final int WINDOW_WIDTH = 500;
 
@@ -83,13 +83,25 @@ public class Teacher extends JFrame {
                     jobs.add(new MoveMouse(e));
                     jobs.add(new ClickMouse(e));
                     jobs.add(new Screenshot());
+                    System.out.println("Mouse clicked");
                 } else {
                     Toolkit.getDefaultToolkit().beep();
                 }
             }
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                if (running) {
+                    jobs.add(new MoveMouse(e));
+                    System.out.println("Mouse moved");
+                    // jobs.add(new ClickMouse(e));
+                    // jobs.add(new Screenshot());
+                } else {
+                    // Toolkit.getDefaultToolkit().beep();
+                }
+            }
         });
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
     }
 
@@ -131,8 +143,8 @@ public class Teacher extends JFrame {
                 while (true) {
                     try {
                         byte[] img = (byte[]) in.readObject();
-//                        System.out.println("Received screenshot of "
-//                                + img.length + " bytes from " + studentName);
+                    //    System.out.println("Received screenshot of "
+                    //            + img.length + " bytes from " + studentName);
                         showIcon(img);
                     } catch (Exception ex) {
                         System.out.println("Exception occurred: " + ex);

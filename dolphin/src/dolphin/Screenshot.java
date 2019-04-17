@@ -22,6 +22,6 @@ public class Screenshot implements RobotAction {
     }
 
     public String toString() {
-        return "Screenshot";
+        return this.toString();
     }
 }
